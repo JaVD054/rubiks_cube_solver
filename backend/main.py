@@ -12,9 +12,11 @@ D   d
 F   f
 B   b
 """
+PORT = 'COM4'
+
 dummy_cube = 'BBURUDBFUFFFRRFUUFLULUFUDLRRDBBDBDBLUDDFLLRRBRLLLBRDDF'
 
-ser = serial.Serial('/dev/ttyUSB0', 9600)
+ser = serial.Serial(PORT, 9600)
 #delay for arduino to reset
 time.sleep(4)
 
