@@ -1,11 +1,13 @@
 #include <Arduino.h>
 #include <cube.cpp>
+#include <Servo.h>
 
 String solution;
 
 RubiksCube cube;
 
-
+Servo flip_servo;
+Servo rotate_servo;
 /*
 clockwise   counterclockwise
 R   r
@@ -15,6 +17,13 @@ D   d
 F   f
 B   b
 */
+void servo_flip(){
+  flip_servo.write(90);
+  delay(1000);
+  flip_servo.write(0);
+  delay(1000);
+}
+
 
 void rotate(int face , int direction){
   int* p = cube.get_position(face);
@@ -30,10 +39,10 @@ void rotate(int face , int direction){
   }
   for (int i = 0; i < y; i++) {
     cube.flip();
-    //TODO: servo_flip();
+    servo_flip();
   }
 
-  Serial.println(cube.faces[5].color);
+  Serial.println(cube.faces[5]);
 
   //servo_covercube();
 
